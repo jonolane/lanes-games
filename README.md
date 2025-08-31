@@ -1,9 +1,5 @@
 # Lanes Games 🎮
 
-A fun game app built for my wife and I to pass the time on long card rides.
-
-## Stack
-
 - PHP / Laravel
 - Tailwind CSS
 - SQLite

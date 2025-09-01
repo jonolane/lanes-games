@@ -3,42 +3,50 @@
         @csrf
 
         <!-- Name -->
-        <div>
+        <div class="bg-white dark:bg-[#161615] dark:text-[#EDEDEC]
+            shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)]
+            dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]
+            rounded-sm p-6 w-full max-w-md">
             <x-input-label for="name" :value="__('Name')" class="text-white mb-1" />
-            <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name"
-                   class="block w-full rounded-md px-3 py-2 border-0
-                          bg-[#2b2b2b] text-white
-                          focus:ring-2 focus:ring-indigo-500" />
+            <x-text-input id="name" name="name" type="text"
+                  class="block w-full"
+                  :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" />
         </div>
 
         <!-- Email -->
-        <div>
+        <div class="bg-white dark:bg-[#161615] dark:text-[#EDEDEC]
+            shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)]
+            dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]
+            rounded-sm p-6 w-full max-w-md">
             <x-input-label for="email" :value="__('Email')" class="text-white mb-1" />
-            <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="username"
-                   class="block w-full rounded-md px-3 py-2 border-0
-                          bg-[#2b2b2b] text-white
-                          focus:ring-2 focus:ring-indigo-500" />
+            <x-text-input id="email" name="email" type="email"
+                  class="block w-full"
+                  :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" />
         </div>
 
         <!-- Password -->
-        <div>
+        <div class="bg-white dark:bg-[#161615] dark:text-[#EDEDEC]
+            shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)]
+            dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]
+            rounded-sm p-6 w-full max-w-md">
             <x-input-label for="password" :value="__('Password')" class="text-white mb-1" />
-            <input id="password" type="password" name="password" required autocomplete="new-password"
-                   class="block w-full rounded-md px-3 py-2 border-0
-                          bg-[#2b2b2b] text-white
-                          focus:ring-2 focus:ring-indigo-500" />
+            <x-text-input id="password" name="password" type="password"
+                  class="block w-full"
+                  required autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password')" />
         </div>
 
         <!-- Confirm Password -->
-        <div>
+        <div class="bg-white dark:bg-[#161615] dark:text-[#EDEDEC]
+            shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)]
+            dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]
+            rounded-sm p-6 w-full max-w-md">
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" class="text-white mb-1" />
-            <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password"
-                   class="block w-full rounded-md px-3 py-2 border-0
-                          bg-[#2b2b2b] text-white
-                          focus:ring-2 focus:ring-indigo-500" />
+            <x-text-input id="password_confirmation" name="password_confirmation" type="password"
+                  class="block w-full"
+                  required autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password_confirmation')" />
         </div>
 
@@ -49,9 +57,7 @@
             </a>
 
             <button type="submit"
-                    class="rounded-md px-4 py-2
-                           bg-[#2b2b2b] hover:bg-[#3a3a3a]
-                           text-white focus:ring-2 focus:ring-indigo-500">
+                    class="rounded-md px-4 py-2 inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
                 {{ __('Register') }}
             </button>
         </div>

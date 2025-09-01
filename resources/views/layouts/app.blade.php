@@ -12,9 +12,9 @@
 <body class="min-h-screen bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18]">
   <header class="border-b border-[#19140035] bg-white/70 backdrop-blur">
     <div class="mx-auto max-w-5xl px-6 h-14 flex items-center justify-between">
-      <a href="{{ url('/') }}" class="font-medium">Home</a>
+      <a href="{{ url('/') }}" class="text-white font-medium">Lane's Games</a>
       <form method="POST" action="{{ route('logout') }}" class="m-0">@csrf
-        <button class="px-4 py-1.5 rounded-sm border border-[#19140035] hover:border-[#1915014a] transition">
+        <button class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
           Log out
         </button>
       </form>

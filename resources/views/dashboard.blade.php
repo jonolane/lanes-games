@@ -1,17 +1,15 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
+    <main class="grid place-items-center min-h-[calc(100vh-4rem)] p-6">
+        <div class="w-full max-w-md">
+            <div class="bg-white dark:bg-[#161615] dark:text-[#EDEDEC]
+                        shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)]
+                        dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]
+                        rounded-sm p-6 text-center">
+                <h1 class="text-xl font-medium mb-2">This or That</h1>
+                <p class="text-sm text-[#706f6c] dark:text-[#A1A09A]">
+                    {{ __("A simple comparison game") }}
+                </p>
             </div>
         </div>
-    </div>
+    </main>
 </x-app-layout>

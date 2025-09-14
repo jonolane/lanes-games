@@ -1,10 +1,13 @@
-<section>
-    <header>
-        <h2 class="text-lg font-medium text-gray-900">
+<section class="bg-white dark:bg-[#161615] dark:text-[#EDEDEC]
+                shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)]
+                dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]
+                rounded-sm p-6">
+    <header class="text-center">
+        <h2 class="text-xl font-medium mb-2 text-[#1b1b18] dark:text-[#EDEDEC]">
             {{ __('Profile Information') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
+        <p class="mt-1 text-sm text-[#706f6c] dark:text-[#A1A09A]">
             {{ __("Update your account's profile information and email address.") }}
         </p>
     </header>
@@ -30,10 +33,10 @@
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
-                    <p class="text-sm mt-2 text-gray-800">
+                    <p class="text-sm mt-2 text-[#706f6c] dark:text-[#A1A09A]">
                         {{ __('Your email address is unverified.') }}
 
-                        <button form="send-verification" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <button form="send-verification" class="underline text-sm text-[#706f6c] dark:text-[#A1A09A] hover:text-black dark:hover:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             {{ __('Click here to re-send the verification email.') }}
                         </button>
                     </p>
@@ -56,7 +59,7 @@
                     x-show="show"
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
+                    class="text-sm text-[#706f6c] dark:text-[#A1A09A]"
                 >{{ __('Saved.') }}</p>
             @endif
         </div>

@@ -21,7 +21,7 @@ class OAuthController extends Controller
 
     public function callback(string $provider)
     {
-        $social = Socialite::driver($provider)->user(); // or ->stateless()->user()
+        $social = Socialite::driver($provider)->user();
 
         $email  = $social->getEmail();
         $name   = $social->getName() ?: $social->getNickname() ?: 'User';

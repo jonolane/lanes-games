@@ -1,10 +1,13 @@
-<section>
-    <header>
-        <h2 class="text-lg font-medium text-gray-900">
+<section class="bg-white dark:bg-[#161615] dark:text-[#EDEDEC]
+                shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)]
+                dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]
+                rounded-sm p-6">
+    <header class="text-center">
+        <h2 class="text-xl font-medium mb-2 text-[#1b1b18] dark:text-[#EDEDEC]">
             {{ __('Update Password') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
+        <p class="mt-1 text-sm text-[#706f6c] dark:text-[#A1A09A]">
             {{ __('Ensure your account is using a long, random password to stay secure.') }}
         </p>
     </header>
@@ -40,7 +43,7 @@
                     x-show="show"
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
+                    class="text-sm text-[#706f6c] dark:text-[#A1A09A]"
                 >{{ __('Saved.') }}</p>
             @endif
         </div>

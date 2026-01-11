@@ -5,65 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ config('app.name', 'Laravel') }}</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=My+Soul&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18]">
-  <header class="border-b border-[#19140035] bg-white/70 backdrop-blur">
-  <div class="mx-auto max-w-5xl px-6 h-14 flex items-center justify-between" x-data="{ open:false }">
-    <a href="{{ url('/') }}" class="text-white font-medium">Lane's Games</a>
 
-        @auth
-        <div class="relative">
-            <button @click="open = !open" @keydown.escape.window="open = false" class="h-10 w-10 me-1 rounded-full ring-1 ring-black/10 dark:ring-white/10 grid place-items-center overflow-hidden" aria-haspopup="menu" :aria-expanded="open">
-            @if(Auth::user()->avatar)
-            <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }} avatar" class="h-full w-full object-cover object-center" />
-            @else
-            <span class="text-sm font-medium text-white/90 bg-[#3b3b3b] h-full w-full grid place-items-center">
-                {{ strtoupper(substr(trim(Auth::user()->name ?? 'U'), 0, 1)) }}
-            </span>
-            @endif
-            </button>
+<body class="min-h-screen flex flex-col bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18]">
+  {{-- Header --}}
+  <header class="border-b border-[#3E3E3A] backdrop-blur">
+    <div class="mx-auto max-w-5xl px-8 sm:px-10 h-16 flex items-center justify-between">
+      <a href="{{ route('dashboard') }}" class="font-brand text-white font-medium text-xl sm:text-2xl">
+        LANE'S GAMES
+      </a>
 
-
-        <div x-cloak x-show="open" @click.outside="open = false" class="absolute right-0 mt-2 w-44 rounded-md border border-black/10 dark:border-white/10 bg-white dark:bg-[#161615] shadow-lg" role="menu">
-            <a href="{{ route('profile.edit') }}" class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal" role="menuitem">
-                    Profile
-            </a>
-
-            <a href="{{ route('legal') }}" class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal" role="menuitem">
-                Legal
-            </a>
-
-            <form method="POST" action="{{ route('logout') }}" class="m-0">
-                @csrf
-                <button type="submit" class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal" role="menuitem">
-                    Log out
-                </button>
-            </form>
-        </div>
-        </div>
-        @endauth
-
-        @guest
-        <a href="{{ route('login') }}" class="inline-block px-4 py-1.5 border border-[#19140035] dark:border-[#3E3E3A] rounded-sm text-sm text-[#1b1b18] dark:text-[#EDEDEC] hover:border-[#1915014a] dark:hover:border-[#62605b]">
-            Log in
+      @auth
+        {{-- Plus icon button (replace href with your actual "create" route) --}}
+        <a href="{{ route('dashboard') }}"
+           class="text-white h-10 w-10 grid place-items-center rounded-sm border border-[#19140035] dark:border-[#3E3E3A]
+                  hover:border-[#1915014a] dark:hover:border-[#62605b]"
+           aria-label="Add">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+            <path d="M12 5v14" />
+            <path d="M5 12h14" />
+          </svg>
         </a>
-        @endguest
+      @endauth
+
+      @guest
+        <a href="{{ route('login') }}"
+           class="inline-block px-4 py-1.5 border border-[#19140035] dark:border-[#3E3E3A]
+                  rounded-sm text-sm text-[#1b1b18] dark:text-[#EDEDEC]
+                  hover:border-[#1915014a] dark:hover:border-[#62605b]">
+          Log in
+        </a>
+      @endguest
     </div>
-    </header>
+  </header>
 
-
-  <main class="min-h-[calc(100vh-3.5rem)] flex items-center justify-center p-6">
+  {{-- Main --}}
+  <main class="flex-1 flex items-center justify-center p-6">
     <div class="w-full max-w-[335px] sm:max-w-xl">
       {{-- Optional card to mirror welcome style --}}
-      <div class="bg-white dark:bg-[#161615] dark:text-[#EDEDEC]
+      <div class="dark:text-[#EDEDEC]
                   rounded-sm shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)]
                   dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] p-6">
         {{ $slot }}
       </div>
     </div>
   </main>
+
+  {{-- Footer (sticky, not fixed) --}}
+  @auth
+<footer class="mt-auto border-t border-[#19140035] bg-white/90 backdrop-blur dark:bg-[#0a0a0a]/90">
+    <div class="mx-auto max-w-5xl px-6">
+        <nav class="h-16 flex flex-nowrap items-center justify-center gap-12 text-base sm:text-lg">
+            <a href="{{ route('profile.edit') }}"
+               class="px-4 py-2 whitespace-nowrap hover:underline underline-offset-4 dark:text-[#EDEDEC]">
+                Profile
+            </a>
+
+            <a href="{{ route('legal') }}"
+               class="px-4 py-2 whitespace-nowrap hover:underline underline-offset-4 dark:text-[#EDEDEC]">
+                Legal
+            </a>
+
+            <form method="POST" action="{{ route('logout') }}" class="m-0">
+                @csrf
+                <button type="submit"
+                        class="px-4 py-2 whitespace-nowrap hover:underline underline-offset-4 dark:text-[#EDEDEC]">
+                    Log Out
+                </button>
+            </form>
+        </nav>
+    </div>
+</footer>
+@endauth
+
 </body>
 </html>

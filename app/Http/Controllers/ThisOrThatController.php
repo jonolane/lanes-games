@@ -101,4 +101,13 @@ class ThisOrThatController extends Controller
 
         return $validated;
     }
+
+    public function destroy(UserGame $userGame)
+    {
+        abort_unless($userGame->user_id === auth()->id(), 403);
+
+        $userGame->delete();
+
+        return redirect()->route('dashboard');
+    }
 }

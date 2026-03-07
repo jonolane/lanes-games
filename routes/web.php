@@ -19,6 +19,7 @@ Route::get('/games/create', [GameController::class, 'create'])
     ->middleware(['auth', 'verified'])
     ->name('games.create');
 
+// This or that
 Route::get('/games/this-or-that/create', [ThisOrThatController::class, 'create'])
     ->middleware(['auth', 'verified'])
     ->name('games.this-or-that.create');
@@ -35,8 +36,14 @@ Route::put('/games/this-or-that/{userGame}', [ThisOrThatController::class, 'upda
     ->middleware(['auth', 'verified'])
     ->name('games.this-or-that.update');
 
+Route::delete('/games/{userGame}', [ThisOrThatController::class, 'destroy'])
+    ->middleware(['auth', 'verified'])
+    ->name('games.destroy');
+
+// Legal
 Route::view('/privacy-policy', 'legal.legal')->name('privacy.policy');
 
+// Auth
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

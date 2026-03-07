@@ -37,6 +37,18 @@
                                     aria-label="Edit">
                                         ✎
                                 </a>
+
+                                <form method="POST" action="{{ route('games.destroy', $game) }}">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit"
+                                        class="text-[#A1A09A] hover:text-red-400 transition-colors"
+                                        title="Delete"
+                                        onclick="return confirm('Delete this game?')">
+                                        🗑
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>

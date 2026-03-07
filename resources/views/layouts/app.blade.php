@@ -23,7 +23,7 @@
 
       @auth
         {{-- Plus icon button (replace href with your actual "create" route) --}}
-        <a href="{{ route('dashboard') }}"
+        <a href="{{ route('games.create') }}"
            class="text-white h-10 w-10 grid place-items-center rounded-sm border border-[#19140035] dark:border-[#3E3E3A]
                   hover:border-[#1915014a] dark:hover:border-[#62605b]"
            aria-label="Add">

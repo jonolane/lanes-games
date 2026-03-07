@@ -27,6 +27,14 @@ Route::post('/games/this-or-that/store', [ThisOrThatController::class, 'store'])
     ->middleware(['auth', 'verified'])
     ->name('games.this-or-that.store');
 
+Route::get('/games/this-or-that/{userGame}/edit', [ThisOrThatController::class, 'edit'])
+    ->middleware(['auth', 'verified'])
+    ->name('games.this-or-that.edit');
+
+Route::put('/games/this-or-that/{userGame}', [ThisOrThatController::class, 'update'])
+    ->middleware(['auth', 'verified'])
+    ->name('games.this-or-that.update');
+
 Route::view('/privacy-policy', 'legal.legal')->name('privacy.policy');
 
 Route::middleware('auth')->group(function () {

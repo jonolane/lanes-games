@@ -14,12 +14,30 @@
             @else
                 @foreach ($games as $game)
                     <div class="dark:text-[#EDEDEC]
-                                shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)]
-                                dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]
-                                rounded-sm p-4">
-                        <div class="font-medium">{{ $game->title }}</div>
-                        <div class="text-sm text-[#706f6c] dark:text-[#A1A09A]">
-                            {{ $game->game->name }}
+                        shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)]
+                        dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]
+                        rounded-sm p-4">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <div class="font-medium">{{ $game->title }}</div>
+                                <div class="text-sm text-[#706f6c] dark:text-[#A1A09A]">
+                                    {{ $game->game->name }}
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <a href="#"
+                                    class="text-[#A1A09A] hover:text-white transition-colors duration-150"
+                                    aria-label="Play">
+                                        ▶
+                                </a>
+
+                                <a href="{{ route('games.this-or-that.edit', $game) }}"
+                                    class="text-[#A1A09A] hover:text-white transition-colors duration-150"
+                                    aria-label="Edit">
+                                        ✎
+                                </a>
+                            </div>
                         </div>
                     </div>
                 @endforeach

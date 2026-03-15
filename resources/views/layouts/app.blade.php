@@ -86,5 +86,6 @@
 </footer>
 @endauth
 
+<x-toast />
 </body>
 </html>

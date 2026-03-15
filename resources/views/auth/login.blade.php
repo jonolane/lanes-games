@@ -1,6 +1,8 @@
 <x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <!-- Fire toast if there is status like 'email sent'-->
+    @if (session('toast'))
+        <div x-data x-init="setTimeout(() => $dispatch('toast', { message: '{{ session('toast') }}', key: '{{ now()->timestamp }}' }), 300)"></div>
+    @endif
 
     <form method="POST" action="{{ route('login') }}">
         @csrf

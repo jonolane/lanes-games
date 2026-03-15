@@ -13,7 +13,7 @@
 </head>
 <body class="min-h-screen bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18]">
   <div class="min-h-screen flex items-center justify-center p-6">
-    <main class="w-full max-w-[335px] sm:max-w-md">
+    <main class="w-full max-w-[335px] sm:max-w-xl">
       <div class="bg-white dark:bg-[#161615] dark:text-[#EDEDEC]
                   rounded-sm shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)]
                   dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] p-6">

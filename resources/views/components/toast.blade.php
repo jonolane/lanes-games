@@ -4,8 +4,10 @@
         if (sessionStorage.getItem(key)) return;
         sessionStorage.setItem(key, '1');
         message = e.detail.message;
-        show = true;
-        setTimeout(() => show = false, 3000);
+        requestAnimationFrame(() => {
+            show = true;
+            setTimeout(() => show = false, 3000);
+        });
     });
 ">
     <div
@@ -16,6 +18,7 @@
         x-transition:leave="transition ease-in duration-500"
         x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0"
+        style="display: none;"
         class="fixed top-6 right-6 z-[9999] flex items-center gap-2 rounded-sm
                bg-[#1b1b18] dark:bg-[#161615]
                text-sm text-[#EDEDEC]

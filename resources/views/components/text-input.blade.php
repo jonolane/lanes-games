@@ -13,5 +13,6 @@ transition-colors duration-150
 hover:bg-[#2a2a2a]
 focus:bg-[#2e2e2e]
 focus:outline-none
+autofill-dark
 '
 ]) !!}>

@@ -31,22 +31,29 @@
             </h2>
 
             <p class="mt-1 text-sm text-[#706f6c] dark:text-[#A1A09A]">
-                {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
+                {{ __('Once your account is deleted, all of its resources and data will be permanently deleted.') }}
+                @if(auth()->user()->provider_name)
+                    {{ __('This action cannot be undone.') }}
+                @else
+                    {{ __('Please enter your password to confirm you would like to permanently delete your account.') }}
+                @endif
             </p>
 
-            <div class="mt-6">
-                <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
+            @unless(auth()->user()->provider_name)
+                <div class="mt-6">
+                    <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
 
-                <x-text-input
-                    id="password"
-                    name="password"
-                    type="password"
-                    class="mt-1 block w-3/4"
-                    placeholder="{{ __('Password') }}"
-                />
+                    <x-text-input
+                        id="password"
+                        name="password"
+                        type="password"
+                        class="mt-1 block w-3/4"
+                        placeholder="{{ __('Password') }}"
+                    />
 
-                <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
-            </div>
+                    <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
+                </div>
+            @endunless
 
             <div class="mt-6 flex justify-end">
                 <x-secondary-button class="border-[#19140035] dark:border-[#3E3E3A]" x-on:click="$dispatch('close')">

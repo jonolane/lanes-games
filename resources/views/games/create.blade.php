@@ -1,5 +1,5 @@
 <x-app-layout>
-    <main class="grid place-items-center min-h-[calc(100vh-4rem)] p-6">
+    <div class="grid place-items-center min-h-[calc(100vh-8rem)] p-6">
         <div class="w-full max-w-md space-y-4">
 
             @foreach ($games as $game)
@@ -21,5 +21,5 @@
             @endforeach
 
         </div>
-    </main>
+    </div>
 </x-app-layout>

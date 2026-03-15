@@ -2,7 +2,7 @@
     @php
         $initialCount = old('count', isset($userGame)
             ? ($userGame->settings['count'] ?? $userGame->entries->count())
-            : 10);
+            : 6);
 
         $initialEntries = old('entries', isset($userGame)
             ? $userGame->entries->pluck('label')->values()->toArray()
@@ -11,8 +11,8 @@
         $initialTitle = old('title', $userGame->title ?? '');
     @endphp
 
-    <main class="grid place-items-center min-h-[calc(100vh-4rem)] p-6">
-        <div class="w-full max-w-md">
+    <div class="grid place-items-center min-h-[calc(100vh-8rem)] p-6">
+        <div class="w-full max-w-2xl">
             <div
                 class="dark:text-[#EDEDEC]
                        shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)]
@@ -34,7 +34,7 @@
                         }
                     },
                     decrease() {
-                        if (this.count > 10) {
+                        if (this.count > 6) {
                             this.count -= 2;
                             this.entries.splice(-2, 2);
                         }
@@ -129,5 +129,5 @@
                 </form>
             </div>
         </div>
-    </main>
+    </div>
 </x-app-layout>

@@ -85,7 +85,7 @@ class ThisOrThatController extends Controller
     {
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'count' => ['required', 'integer', 'min:10', 'max:50'],
+            'count' => ['required', 'integer', 'min:6', 'max:50'],
             'entries' => ['required', 'array'],
             'entries.*' => ['required', 'string', 'max:255'],
         ]);

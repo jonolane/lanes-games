@@ -48,16 +48,7 @@
   </header>
 
   {{-- Main --}}
-  <main class="flex-1 flex items-center justify-center p-6">
-    <div class="w-full max-w-[335px] sm:max-w-xl">
-      {{-- Optional card to mirror welcome style --}}
-      <div class="dark:text-[#EDEDEC]
-                  rounded-sm shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)]
-                  dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] p-6">
-        {{ $slot }}
-      </div>
-    </div>
-  </main>
+    {{ $slot }}
 
   {{-- Footer (sticky, not fixed) --}}
   @auth

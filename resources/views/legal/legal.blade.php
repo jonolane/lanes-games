@@ -1,5 +1,5 @@
 <x-app-layout>
-    <main class="grid place-items-center min-h-[calc(100vh-4rem)] p-6">
+    <div class="grid place-items-center min-h-[calc(100vh-8rem)] p-6">
         <div class="w-full max-w-md">
             <div class="bg-white dark:bg-[#161615] dark:text-[#EDEDEC]
                         shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)]
@@ -13,29 +13,25 @@
                 <hr class="my-4 border-[#19140035] dark:border-[#3E3E3A]">
 
                 <div class="text-left space-y-6">
-                    <!-- Privacy Policy -->
                     <section>
                         <h2 class="text-base font-semibold mb-2">Privacy Policy</h2>
                         <p class="text-sm mb-2">
                             We use Facebook/Google solely to authenticate you and fetch basic profile info
-                            (name, email, avatar URL, provider ID). We don’t sell your data. We only share data
+                            (name, email, avatar URL, provider ID). We don't sell your data. We only share data
                             with service providers as needed to operate this application.
                         </p>
                     </section>
 
-                    <!-- Data Deletion -->
                     <section id="data-deletion">
                         <h2 class="text-base font-semibold mb-2">Facebook Data Deletion</h2>
                         <ol class="list-decimal pl-5 text-sm space-y-1">
                             <li>On Facebook: Settings &amp; Privacy → Settings → Apps and Websites → find this app → <strong>Remove</strong>.</li>
-                            <li>Or email <a class="underline" href="mailto:support@yourdomain.com">lane7520@gmail.com</a> and we’ll delete your account data
+                            <li>Or email <a class="underline" href="mailto:support@yourdomain.com">lane7520@gmail.com</a> and we'll delete your account data
                                 from our systems.</li>
                         </ol>
                     </section>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 </x-app-layout>
-
-

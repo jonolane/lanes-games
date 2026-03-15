@@ -99,14 +99,13 @@
 
                         <template x-for="(entry, index) in entries" :key="index">
                             <div class="mb-3">
-                                <input
+                                <x-text-input
                                     name="entries[]"
                                     type="text"
                                     x-model="entries[index]"
-                                    :placeholder="'Entry ' + (index + 1)"
-                                    class="w-full rounded-sm border border-[#3E3E3A] bg-[#1f1f1f] text-white p-2 transition-colors duration-150 hover:bg-[#2a2a2a] focus:bg-[#2e2e2e] focus:outline-none"
+                                    x-bind:placeholder="'Entry ' + (index + 1)"
                                     required
-                                >
+                                />
                             </div>
                         </template>
 

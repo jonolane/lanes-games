@@ -42,11 +42,17 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
-
         $user = $request->user();
+
+        // If the user signed up with a social provider, skip password validation
+        if ($user->provider_name === 'google' || $user->provider_name === 'facebook') {
+            // No password required, just proceed with deletion
+        } else {
+            // Validate password for normal users
+            $request->validateWithBag('userDeletion', [
+                'password' => ['required', 'current_password'],
+            ]);
+        }
 
         Auth::logout();
 

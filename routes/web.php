@@ -41,6 +41,10 @@ Route::delete('/games/{userGame}', [ThisOrThatController::class, 'destroy'])
     ->middleware(['auth', 'verified'])
     ->name('games.destroy');
 
+Route::get('/games/this-or-that/{userGame}/play', [ThisOrThatController::class, 'play'])
+    ->middleware(['auth', 'verified'])
+    ->name('games.this-or-that.play');
+
 // Legal
 Route::view('/privacy-policy', 'legal.legal')->name('privacy.policy');
 

@@ -110,4 +110,14 @@ class ThisOrThatController extends Controller
 
         return redirect()->route('dashboard');
     }
+
+    public function play(UserGame $userGame)
+    {
+        abort_unless($userGame->user_id === auth()->id(), 403);
+        $entries = $userGame->entries->pluck('label')->values()->toArray();
+        return view('games.this-or-that.play', [
+            'userGame' => $userGame,
+            'entries' => $entries,
+        ]);
+}
 }

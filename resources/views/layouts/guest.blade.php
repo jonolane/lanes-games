@@ -12,6 +12,8 @@
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18]">
+  {{-- Loader --}}
+  <x-loader />
   <div class="min-h-screen flex items-center justify-center p-6">
     <main class="w-full max-w-[335px] sm:max-w-xl">
       <div class="bg-white dark:bg-[#161615] dark:text-[#EDEDEC]

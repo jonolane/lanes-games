@@ -18,6 +18,7 @@
                        shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)]
                        dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]
                        rounded-sm p-6"
+                x-cloak
                 x-data='{
                     count: {{ (int) $initialCount }},
                     entries: (() => {

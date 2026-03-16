@@ -14,11 +14,14 @@
 </head>
 
 <body class="min-h-screen flex flex-col bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18]">
+  {{-- Loader --}}
+  <x-loader />
+  
   {{-- Header --}}
   <header class="border-b border-[#3E3E3A] backdrop-blur">
     <div class="mx-auto max-w-5xl px-8 sm:px-10 h-16 flex items-center justify-between">
       <a href="{{ route('dashboard') }}" class="font-brand text-white font-medium text-xl sm:text-2xl">
-        LANE'S GAMES
+        VOYAGE
       </a>
 
       @auth

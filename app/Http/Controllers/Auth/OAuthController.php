@@ -53,7 +53,7 @@ class OAuthController extends Controller
             }
         }
 
-        if ($avatar && empty($user->avatar)) {
+        if ($avatar) {
             $user->avatar = $avatar;
         }
         $user->save();

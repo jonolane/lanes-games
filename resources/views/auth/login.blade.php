@@ -20,13 +20,15 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <!-- Remember Me -->
+        <input type="hidden" name="remember" value="1">
+        <!-- Remember Me - removing this for now. opting to ALWAYS remember user with larvel long-lived cookie. hidden input above
         <div>
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-[#3E3E3A] bg-[#1f1f1f] text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ms-2 text-sm text-[#706f6c] dark:text-[#A1A09A]">{{ __('Remember me') }}</span>
             </label>
         </div>
+        -->
 
         <div class="flex items-center justify-end">
             @if (Route::has('password.request'))

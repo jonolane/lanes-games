@@ -18,35 +18,30 @@
      x-transition:enter-end="opacity-100"
      style="display: none;"
      class="fixed inset-0 z-[9999] flex items-center justify-center bg-[#0a0a0a]">
-    <svg class="animate-spin" width="180" height="180" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="44" stroke="white" stroke-width="3" fill="none"/>
-        <circle cx="50" cy="50" r="36" stroke="white" stroke-width="2" fill="none"/>
-        <circle cx="50" cy="50" r="10" stroke="white" stroke-width="2.5" fill="currentColor"/>
-        <circle cx="50" cy="50" r="4" fill="white"/>
+    <svg class="animate-spin" width="200" height="200" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="80" cy="80" r="40" stroke="white" stroke-width="3.5" fill="none"/>
+        <circle cx="80" cy="80" r="32" stroke="white" stroke-width="2" fill="none"/>
+        <circle cx="80" cy="80" r="10" stroke="white" stroke-width="2.5" fill="#0a0a0a"/>
+        <circle cx="80" cy="80" r="4" fill="white"/>
+
         @for ($i = 0; $i < 8; $i++)
             @php
                 $angle = $i * 45;
                 $rad = deg2rad($angle);
-                $x1 = 50 + 10 * cos($rad);
-                $y1 = 50 + 10 * sin($rad);
-                $x2 = 50 + 36 * cos($rad);
-                $y2 = 50 + 36 * sin($rad);
+                $x1 = 80 + 10 * cos($rad);
+                $y1 = 80 + 10 * sin($rad);
+                $x2 = 80 + 48 * cos($rad);
+                $y2 = 80 + 48 * sin($rad);
             @endphp
             <line x1="{{ $x1 }}" y1="{{ $y1 }}" x2="{{ $x2 }}" y2="{{ $y2 }}"
-                  stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                  stroke="white" stroke-width="3" stroke-linecap="round"/>
         @endfor
+
         @for ($i = 0; $i < 8; $i++)
-            @php
-                $angle = $i * 45;
-                $rad = deg2rad($angle);
-                $cx = 50 + 44 * cos($rad);
-                $cy = 50 + 44 * sin($rad);
-                $hx = 50 + 50 * cos($rad);
-                $hy = 50 + 50 * sin($rad);
-            @endphp
-            <line x1="{{ $cx }}" y1="{{ $cy }}" x2="{{ $hx }}" y2="{{ $hy }}"
-                  stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-            <circle cx="{{ $hx }}" cy="{{ $hy }}" r="3" fill="white"/>
+            <g transform="translate(80,80) rotate({{ $i * 45 }})">
+                <rect x="48" y="-3" width="8" height="6" rx="3" fill="white"/>
+                <circle cx="57" cy="0" r="2.5" fill="white"/>
+            </g>
         @endfor
     </svg>
 </div>

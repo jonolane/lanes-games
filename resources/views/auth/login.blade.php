@@ -51,5 +51,11 @@
             </a>
             -->
         </div>
+        <div class="text-center">
+            <span class="text-sm text-[#706f6c] dark:text-[#A1A09A]">Don't have an account?</span>
+            <a href="{{ route('register') }}" class="text-sm underline underline-offset-4 text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-white ms-1">
+                Register
+            </a>
+        </div>
     </form>
 </x-guest-layout>

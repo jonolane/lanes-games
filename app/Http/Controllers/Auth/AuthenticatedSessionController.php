@@ -16,10 +16,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View|RedirectResponse
     {
-        if (Auth::check()) {
+        if (Auth::check() && !Auth::user()->is_guest) {
             return redirect()->route('dashboard');
         }
-
         return view('auth.login');
     }
 

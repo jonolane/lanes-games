@@ -27,6 +27,31 @@ class OAuthController extends Controller
         $name   = $social->getName() ?: $social->getNickname() ?: 'User';
         $avatar = $social->getAvatar();
 
+        // Convert guest account to real account
+        if (Auth::check() && Auth::user()->is_guest) {
+            $user = Auth::user();
+            $user->update([
+                'name' => $name,
+                'email' => $email,
+                'provider_name' => $provider,
+                'provider_id' => $social->getId(),
+                'is_guest' => false,
+            ]);
+            if ($avatar) {
+                if ($provider === 'google') {
+                    $avatar = preg_replace('/=s\d+-c/', '=s256-c', $avatar);
+                    if (!str_contains($avatar, 'sz=')) {
+                        $avatar .= (str_contains($avatar, '?') ? '&' : '?') . 'sz=256';
+                    }
+                } else if ($provider === 'facebook') {
+                    $avatar = "https://graph.facebook.com/{$social->getId()}/picture?type=large&width=256&height=256";
+                }
+                $user->avatar = $avatar;
+            }
+            $user->save();
+            return redirect()->intended('/dashboard');
+        }
+
         if ($email) {
             $user = User::firstOrCreate(
                 ['email' => $email],

@@ -7,10 +7,13 @@ use App\Http\Controllers\Auth\OAuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\ThisOrThatController;
+use App\Http\Controllers\Auth\GuestController;
 
 Route::get('/', function () {
     return Auth::check() ? redirect()->route('dashboard') : view('welcome');
 });
+
+Route::post('/guest', [GuestController::class, 'store'])->name('guest.login');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])

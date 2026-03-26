@@ -27,11 +27,14 @@
                 transition-all duration-200 hover:bg-[#134e45] hover:border-[#2dd4a8] active:bg-[#0f3d36]">
                 Log In
             </a>
-            <a href="#"
-                class="inline-block px-10 py-4 sm:px-12 sm:py-4 md:px-16 md:py-5 md:text-lg sm:text-base lg:px-12 lg:py-4 lg:text-base rounded-sm border border-[#3E3E3A] bg-transparent text-base text-[#A1A09A] text-center
-                transition-all duration-200 hover:bg-[#133050] hover:border-[#2da8d4] hover:text-white active:bg-[#0f2840]">
-                Enter as Guest
-            </a>
+            <form method="POST" action="{{ route('guest.login') }}" class="inline">
+            @csrf
+                <button type="submit"
+                    class="inline-block px-10 py-4 sm:px-12 sm:py-4 md:px-16 md:py-5 md:text-lg sm:text-base lg:px-12 lg:py-4 lg:text-base rounded-sm border border-[#3E3E3A] bg-transparent text-base text-[#A1A09A] text-center
+                    transition-all duration-200 hover:bg-[#133050] hover:border-[#2da8d4] hover:text-white active:bg-[#0f2840] w-full sm:w-auto">
+                    Enter as Guest
+                </button>
+            </form>
         </div>
     </div>
 

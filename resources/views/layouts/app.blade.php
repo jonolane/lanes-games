@@ -50,7 +50,7 @@
               <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}"
                 class="h-10 w-10 rounded-full object-cover border border-[#3E3E3A] group-hover:border-[#62605b] transition-colors" />
               @else
-              <div class="h-10 w-10 rounded-full border border-[#3E3E3A] group-hover:border-[#62605b] flex items-center justify-center text-sm font-medium text-[#EDEDEC] bg-[#1f1f1f] transition-colors">
+              <div class="h-10 w-10 rounded-full border border-[#3E3E3A] group-hover:border-[#62605b] flex items-center justify-center text-base font-medium text-[#EDEDEC] bg-[#1f1f1f] transition-colors">
                 {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
               </div>
               @endif
@@ -71,21 +71,30 @@
             x-cloak
             class="absolute right-0 mt-2 w-40 rounded-sm border border-[#3E3E3A]
                 bg-[#161615] shadow-lg overflow-hidden">
-            <a href="{{ route('profile.edit') }}"
-            class="block px-4 py-2.5 text-sm text-[#EDEDEC] hover:bg-[#1f1f1f] transition-colors">
-              Profile
-            </a>
+            @if(!auth()->user()->is_guest)
+              <a href="{{ route('profile.edit') }}"
+                class="block px-4 py-2.5 text-sm text-[#EDEDEC] hover:bg-[#1f1f1f] transition-colors">
+                Profile
+              </a>
+            @else
+              <a href="{{ route('register') }}"
+                class="block px-4 py-2.5 text-sm text-[#EDEDEC] hover:bg-[#1f1f1f] transition-colors">
+                Create Account
+              </a>
+            @endif
             <a href="{{ route('legal') }}"
               class="block px-4 py-2.5 text-sm text-[#EDEDEC] hover:bg-[#1f1f1f] transition-colors">
               Legal
             </a>
-            <form method="POST" action="{{ route('logout') }}" class="m-0">
-              @csrf
-              <button type="submit"
+            @if(!auth()->user()->is_guest)
+              <form method="POST" action="{{ route('logout') }}" class="m-0">
+                @csrf
+                <button type="submit"
                     class="block w-full text-left px-4 py-2.5 text-sm text-[#EDEDEC] hover:bg-[#1f1f1f] transition-colors">
-                Log Out
-              </button>
-            </form>
+                    Log Out
+                </button>
+              </form>
+            @endif
           </div>
         </div>
       </div>

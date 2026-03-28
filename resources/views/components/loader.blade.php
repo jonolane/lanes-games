@@ -1,23 +1,6 @@
-<div id="page-loader" x-data="{ loading: false }"
-     x-init="
-         document.addEventListener('click', (e) => {
-             let link = e.target.closest('a[href]');
-             if (link && link.href && !link.href.startsWith('javascript') && !link.hasAttribute('x-on:click') && link.target !== '_blank') {
-                 setTimeout(() => loading = true, 300);
-             }
-         });
-         document.querySelectorAll('form').forEach(f => {
-             f.addEventListener('submit', () => {
-                 setTimeout(() => loading = true, 300);
-             });
-         });
-     "
-     x-show="loading"
-     x-transition:enter="transition ease-out duration-200"
-     x-transition:enter-start="opacity-0"
-     x-transition:enter-end="opacity-100"
-     style="display: none;"
-     class="fixed inset-0 z-[9999] flex items-center justify-center bg-[#0a0a0a]">
+<div id="page-loader"
+     style="display: none; position: fixed; inset: 0; z-index: 9999; align-items: center; justify-content: center; background: #0a0a0a;"
+     class="loader-target">
     <svg class="animate-spin" width="200" height="200" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="80" cy="80" r="40" stroke="white" stroke-width="3.5" fill="none"/>
         <circle cx="80" cy="80" r="32" stroke="white" stroke-width="2" fill="none"/>
@@ -44,10 +27,30 @@
     </svg>
 </div>
 <script>
-    window.addEventListener('pagehide', function() {
-        document.getElementById('page-loader').style.display = 'none';
-    });
-    window.addEventListener('pageshow', function() {
-        document.getElementById('page-loader').style.display = 'none';
-    });
+    (function() {
+        var loader = document.getElementById('page-loader');
+        var timer = null;
+
+        document.addEventListener('click', function(e) {
+            var link = e.target.closest('a[href]');
+            if (link && link.href && !link.href.startsWith('javascript') && !link.hasAttribute('x-on:click') && link.target !== '_blank') {
+                timer = setTimeout(function() {
+                    loader.style.display = 'flex';
+                }, 300);
+            }
+        });
+
+        document.querySelectorAll('form').forEach(function(f) {
+            f.addEventListener('submit', function() {
+                timer = setTimeout(function() {
+                    loader.style.display = 'flex';
+                }, 300);
+            });
+        });
+
+        window.addEventListener('pageshow', function() {
+            clearTimeout(timer);
+            loader.style.display = 'none';
+        });
+    })();
 </script>

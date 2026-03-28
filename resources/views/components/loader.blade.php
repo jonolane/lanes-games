@@ -1,5 +1,6 @@
 <div x-data="{ loading: false }"
      x-init="
+         window.addEventListener('pageshow', (e) => { if (e.persisted) loading = false; });
          document.addEventListener('click', (e) => {
              let link = e.target.closest('a[href]');
              if (link && link.href && !link.href.startsWith('javascript') && !link.hasAttribute('x-on:click') && link.target !== '_blank') {

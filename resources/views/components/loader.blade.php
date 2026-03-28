@@ -44,9 +44,10 @@
     </svg>
 </div>
 <script>
-    window.addEventListener('pageshow', function(e) {
-        if (e.persisted) {
-            document.getElementById('page-loader').style.display = 'none';
-        }
+    window.addEventListener('pagehide', function() {
+        document.getElementById('page-loader').style.display = 'none';
+    });
+    window.addEventListener('pageshow', function() {
+        document.getElementById('page-loader').style.display = 'none';
     });
 </script>

@@ -1,6 +1,5 @@
-<div x-data="{ loading: false }"
+<div id="page-loader" x-data="{ loading: false }"
      x-init="
-         window.addEventListener('pageshow', (e) => { if (e.persisted) loading = false; });
          document.addEventListener('click', (e) => {
              let link = e.target.closest('a[href]');
              if (link && link.href && !link.href.startsWith('javascript') && !link.hasAttribute('x-on:click') && link.target !== '_blank') {
@@ -24,7 +23,6 @@
         <circle cx="80" cy="80" r="32" stroke="white" stroke-width="2" fill="none"/>
         <circle cx="80" cy="80" r="10" stroke="white" stroke-width="2.5" fill="#0a0a0a"/>
         <circle cx="80" cy="80" r="4" fill="white"/>
-
         @for ($i = 0; $i < 8; $i++)
             @php
                 $angle = $i * 45;
@@ -37,7 +35,6 @@
             <line x1="{{ $x1 }}" y1="{{ $y1 }}" x2="{{ $x2 }}" y2="{{ $y2 }}"
                   stroke="white" stroke-width="3" stroke-linecap="round"/>
         @endfor
-
         @for ($i = 0; $i < 8; $i++)
             <g transform="translate(80,80) rotate({{ $i * 45 }})">
                 <rect x="48" y="-3" width="8" height="6" rx="3" fill="white"/>
@@ -46,3 +43,10 @@
         @endfor
     </svg>
 </div>
+<script>
+    window.addEventListener('pageshow', function(e) {
+        if (e.persisted) {
+            document.getElementById('page-loader').style.display = 'none';
+        }
+    });
+</script>

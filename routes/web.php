@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\ThisOrThatController;
 use App\Http\Controllers\Auth\GuestController;
+use App\Http\Controllers\BracketsController;
 
 Route::get('/', function () {
     return Auth::check() ? redirect()->route('dashboard') : view('welcome');
@@ -47,6 +48,23 @@ Route::delete('/games/{userGame}', [ThisOrThatController::class, 'destroy'])
 Route::get('/games/this-or-that/{userGame}/play', [ThisOrThatController::class, 'play'])
     ->middleware(['auth', 'verified'])
     ->name('games.this-or-that.play');
+
+// Brackets
+Route::get('/games/brackets/create', [BracketsController::class, 'create'])
+    ->middleware(['auth', 'verified'])
+    ->name('games.brackets.create');
+
+Route::post('/games/brackets/store', [BracketsController::class, 'store'])
+    ->middleware(['auth', 'verified'])
+    ->name('games.brackets.store');
+
+Route::get('/games/brackets/{userGame}/edit', [BracketsController::class, 'edit'])
+    ->middleware(['auth', 'verified'])
+    ->name('games.brackets.edit');
+
+Route::put('/games/brackets/{userGame}', [BracketsController::class, 'update'])
+    ->middleware(['auth', 'verified'])
+    ->name('games.brackets.update');
 
 // Legal
 Route::view('/privacy-policy', 'legal.legal')->name('privacy.policy');

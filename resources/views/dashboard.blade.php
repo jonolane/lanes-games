@@ -26,12 +26,17 @@
                                 <p class="text-xs text-[#706f6c] dark:text-[#A1A09A] mt-1">
                                     {{ $game->entries->count() }} entries · {{ $game->entries->count() - 1 }} rounds
                                 </p>
+                            @elseif ($game->game->slug === 'brackets')
+                                <p class="text-xs text-[#706f6c] dark:text-[#A1A09A] mt-1">
+                                    {{ $game->entries->count() }} entries
+                                </p>
                             @endif
                         </div>
  
                         {{-- Action buttons --}}
                         <div class="flex items-center justify-center gap-2 mt-4">
-                            <a href="{{ route('games.this-or-that.play', $game) }}"
+                            @if(Route::has('games.' . $game->game->slug . '.play'))
+                            <a href="{{ route('games.' . $game->game->slug . '.play', $game) }}"
                                class="group flex items-center gap-1.5 rounded-sm border border-[#3E3E3A] px-4 py-2 text-sm
                                       text-[#A1A09A] transition-all duration-200
                                       hover:border-green-500/50 hover:text-green-400 hover:bg-green-500/5">
@@ -40,8 +45,9 @@
                                 </svg>
                                 Play
                             </a>
+                            @endif
  
-                            <a href="{{ route('games.this-or-that.edit', $game) }}"
+                            <a href="{{ route('games.' . $game->game->slug . '.edit', $game) }}"
                                class="group flex items-center gap-1.5 rounded-sm border border-[#3E3E3A] px-4 py-2 text-sm
                                       text-[#A1A09A] transition-all duration-200
                                       hover:border-[#62605b] hover:text-white hover:bg-[#1f1f1f]">

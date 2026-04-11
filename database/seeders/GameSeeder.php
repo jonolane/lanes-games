@@ -8,14 +8,18 @@ use Illuminate\Database\Seeder;
 
 class GameSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        Game::updateOrCreate(
-            ['slug' => 'this-or-that'],
-            ['name' => 'This or That']
-        );
+        $games = [
+            ['name' => 'This or That', 'slug' => 'this-or-that'],
+            ['name' => 'Brackets', 'slug' => 'brackets'],
+        ];
+
+        foreach ($games as $game) {
+            Game::updateOrCreate(
+                ['slug' => $game['slug']],
+                ['name' => $game['name']]
+            );
+        }
     }
 }

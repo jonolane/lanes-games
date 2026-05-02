@@ -181,12 +181,12 @@
 
         {{-- FINALS VIEW (mobile/tablet only) --}}
         <div x-show="phase === 'finals'" class="flex-1 flex flex-col xl:hidden">
-            <div class="text-center mb-6">
+            <div class="text-center">
                 <h2 class="text-xl sm:text-2xl font-medium text-[#EDEDEC]">{{ $userGame->title }}</h2>
                 <p class="text-xs text-[#A1A09A] mt-1">Finals</p>
             </div>
             <div class="flex-1 flex items-center justify-center">
-                <div class="flex flex-col items-center gap-6 w-full max-w-sm px-4">
+                <div class="flex flex-col items-center gap-10 w-full max-w-sm px-4">
                     <button @click="pickFinal(0)"
                             :class="{
                                 'match-active': finalsResult === null,
@@ -194,7 +194,7 @@
                                 'eliminated': finalsResult !== null && finalsResult !== 0,
                                 'advanced': finalsResult === 0
                             }"
-                            class="bracket-slot w-24 xl:w-44 px-2 py-2 xl:px-2 xl:py-2 text-[11px] xl:text-sm text-left rounded-sm border border-[#3E3E3A] bg-[#161615] text-[#EDEDEC] truncate disabled:cursor-default transition-all"
+                            class="text-center rounded-sm border border-[#3E3E3A] bg-[#161615] text-[#EDEDEC] font-medium transition-all w-full px-6 py-4 text-base md:py-12 md:text-3xl md:px-16 xl:py-4 xl:text-base xl:px-6"
                             x-text="finals[0] || '—'">
                     </button>
 
@@ -211,7 +211,7 @@
                                 'eliminated': finalsResult !== null && finalsResult !== 1,
                                 'advanced': finalsResult === 1
                             }"
-                            class="bracket-slot w-24 xl:w-44 px-2 py-2 xl:px-2 xl:py-2 text-[11px] xl:text-sm text-left rounded-sm border border-[#3E3E3A] bg-[#161615] text-[#EDEDEC] truncate disabled:cursor-default transition-all"
+                            class="text-center rounded-sm border border-[#3E3E3A] bg-[#161615] text-[#EDEDEC] font-medium transition-all w-full px-6 py-4 text-base md:py-12 md:text-3xl md:px-16 xl:py-4 xl:text-base xl:px-6"
                             x-text="finals[1] || '—'">
                     </button>
                 </div>

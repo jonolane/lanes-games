@@ -66,6 +66,10 @@ Route::put('/games/brackets/{userGame}', [BracketsController::class, 'update'])
     ->middleware(['auth', 'verified'])
     ->name('games.brackets.update');
 
+Route::get('/games/brackets/{userGame}/play', [BracketsController::class, 'play'])
+    ->middleware(['auth', 'verified'])
+    ->name('games.brackets.play');
+
 // Legal
 Route::view('/privacy-policy', 'legal.legal')->name('privacy.policy');
 

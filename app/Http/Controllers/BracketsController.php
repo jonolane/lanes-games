@@ -87,4 +87,14 @@ class BracketsController extends Controller
         $userGame->delete();
         return redirect()->route('dashboard');
     }
+
+    public function play(UserGame $userGame)
+    {
+        abort_unless($userGame->user_id === auth()->id(), 403);
+        $entries = $userGame->entries->pluck('label')->values()->toArray();
+        return view('games.brackets.play', [
+            'userGame' => $userGame,
+            'entries' => $entries,
+        ]);
+    }
 }
